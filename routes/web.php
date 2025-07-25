@@ -1,81 +1,82 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Auth;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Accueil et auth
+Route::get('/', fn () => view('welcome'));
+require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Route de redirection commune
+    Route::get('/tableau-de-bord', [DashboardController::class, 'Maindashboard'])->name('dashboard.main');
 });
 
-require __DIR__.'/auth.php';
+// ------------------------- ADMIN -------------------------
+Route::prefix('tableau-de-bord/admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboardAdmin'])->name('dashboard');
+    Route::get('/utilisateurs', [DashboardController::class, 'listUsers'])->name('utilisateurs');
+    Route::get('/roles', [DashboardController::class, 'role'])->name('roles');
+    Route::get('/validations', [DashboardController::class, 'validationUser'])->name('validations');
+    Route::get('/signalements', [DashboardController::class, 'signalement'])->name('signalements');
+});
 
-// Routes Entrepreneur
+// ---------------------- ENTREPRENEUR ----------------------
+Route::prefix('tableau-de-bord/entrepreneur')->name('entrepreneur.')->middleware(['auth', 'role:entrepreneur'])->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboardENTPNR'])->name('dashboard');
 
-Route::get("/tableau-de-bord", [DashboardController::class, 'Maindashboard'])->name('main-dashboard');
-Route::get("/entrepreneurs", [DashboardController::class, 'listeEntrepreneurs'])->name('liste-entrepreneurs');
-Route::get("/TBENTRPNR", [DashboardController::class, 'dashboardENTPNR'])->name('dashboard-entrepreneur');
-Route::get("/mes_projet_ENTRPNR", [DashboardController::class, 'mesProjets'])->name('mesProjets-entrepreneur');
-Route::get("/nouveau_projet_ENTRPNR", [DashboardController::class, 'newProjets'])->name('newProjets-entrepreneur');
-Route::get("/editer_projet_ENTRPNR", [DashboardController::class, 'editProjets'])->name('editProjets-entrepreneur');
-Route::get("/detail_projet_ENTRPNR", [DashboardController::class, 'projetDetails'])->name('projetDetails-entrepreneur');
-Route::get("/demande_mentorat_ENTRPNR", [DashboardController::class, 'demandes'])->name('demandes-entrepreneur');
-Route::get("/nouvelle_demande_mentorat_ENTRPNR", [DashboardController::class, 'newDemandes'])->name('newDemandes-entrepreneur');
-Route::get("/sessions_mentorat_ENTRPNR", [DashboardController::class, 'sessions'])->name('session-entrepreneur');
-Route::get("/sessions_mentorat_ENTRPNR", [DashboardController::class, 'sessions'])->name('session-entrepreneur');
-Route::get("/candidatures_incubateurs_ENTRPNR", [DashboardController::class, 'candidatures'])->name('candidatures-entrepreneur');
-Route::get("/recherches_incubateurs_ENTRPNR", [DashboardController::class, 'recherches'])->name('recherches-entrepreneur');
-Route::get("/recherches_incubateurs_ENTRPNR", [DashboardController::class, 'recherches'])->name('recherches-entrepreneur');
-Route::get("/financements_ENTRPNR", [DashboardController::class, 'financements'])->name('financements-entrepreneur');
-Route::get("/propositions_ENTRPNR", [DashboardController::class, 'proposition'])->name('propositions-entrepreneur');
+    Route::get('/mes-projets', [DashboardController::class, 'mesProjets'])->name('projets.index');
+    Route::get('/nouveau-projet', [DashboardController::class, 'newProjets'])->name('projets.create');
+    Route::get('/editer-projet', [DashboardController::class, 'editProjets'])->name('projets.edit');
+    Route::get('/detail-projet', [DashboardController::class, 'projetDetails'])->name('projets.detail');
 
-// Routes mentors
+    Route::get('/demandes', [DashboardController::class, 'demandes'])->name('mentorat.demandes');
+    Route::get('/nouvelle-demande', [DashboardController::class, 'newDemandes'])->name('mentorat.nouvelle');
+    Route::get('/sessions', [DashboardController::class, 'sessions'])->name('mentorat.sessions');
 
-Route::get("/dashboard_mentor", [DashboardController::class, 'dashboardMentor'])->name('dashboard-mentor');
-Route::get("/dashboard_mentor", [DashboardController::class, 'dashboardMentor'])->name('dashboard-mentor');
-Route::get("/accompagnement_mentor", [DashboardController::class, 'accompagnement'])->name('accompagnement-mentor');
-Route::get("/projets_disponibles_mentor", [DashboardController::class, 'disponibilite'])->name('projets-disponibles-mentor');
-Route::get("/calendrier_disponibles_mentor", [DashboardController::class, 'calendrier'])->name('calendrier-disponibles-mentor');
-Route::get("/preference_disponibles_mentor", [DashboardController::class, 'preference'])->name('preference-disponibles-mentor');
-Route::get("/donnee_evaluation_mentor", [DashboardController::class, 'evaluation'])->name('donnee_evaluation_mentor');
+    Route::get('/candidatures', [DashboardController::class, 'candidatures'])->name('incubateur.candidatures');
+    Route::get('/recherches', [DashboardController::class, 'recherches'])->name('incubateur.recherches');
 
-// Routes investisseurs
+    Route::get('/financements', [DashboardController::class, 'financements'])->name('financement.recherche');
+    Route::get('/propositions', [DashboardController::class, 'proposition'])->name('financement.propositions');
+});
 
-Route::get("/dashboard_invess", [DashboardController::class, 'dashboardInvess'])->name('dashboard_invess');
-Route::get("/decouverte", [DashboardController::class, 'decouverte'])->name('decouverte');
-Route::get("/portfolio", [DashboardController::class, 'portfolio'])->name('portfolio');
-Route::get("/alerte", [DashboardController::class, 'alerte'])->name('alerte_preference');
-Route::get("/liste", [DashboardController::class, 'liste'])->name('liste-alerte');
-Route::get("/transactions", [DashboardController::class, 'transactions'])->name('transactions');
+// ------------------------- MENTOR -------------------------
+Route::prefix('tableau-de-bord/mentor')->name('mentor.')->middleware(['auth', 'role:mentor'])->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboardMentor'])->name('dashboard');
 
-// Routes incubateurs
+    Route::get('/accompagnement', [DashboardController::class, 'accompagnement'])->name('accompagnement');
+    Route::get('/disponibilites', [DashboardController::class, 'disponibilite'])->name('disponibilite');
+    Route::get('/calendrier', [DashboardController::class, 'calendrier'])->name('calendrier');
+    Route::get('/preferences', [DashboardController::class, 'preference'])->name('preferences');
+    Route::get('/evaluations', [DashboardController::class, 'evaluation'])->name('evaluations');
+});
 
-Route::get("/dashboard_incub", [DashboardController::class, 'dashboardIncub'])->name('dashboard_incub');
-Route::get("/incubes", [DashboardController::class, 'incubes'])->name('incubes');
-Route::get("/selection", [DashboardController::class, 'selection'])->name('selection');
-Route::get("/lance", [DashboardController::class, 'lance'])->name('lance');
-Route::get("/nouveau_projet", [DashboardController::class, 'newAppel'])->name('nouveau_projet');
-Route::get("/liste_incubateurs", [DashboardController::class, 'listeIncub'])->name('liste_incubateurs');
-Route::get("/liste_incubateurs", [DashboardController::class, 'listeIncub'])->name('liste_incubateurs');
-Route::get("/creation", [DashboardController::class, 'creation'])->name('creation_incubateurs');
-Route::get("/equipe", [DashboardController::class, 'equipe'])->name('equipe_incubateurs');
+// ---------------------- INVESTISSEUR ----------------------
+Route::prefix('tableau-de-bord/investisseur')->name('investisseur.')->middleware(['auth', 'role:investisseur'])->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboardInvess'])->name('dashboard');
 
-// Routes admin
+    Route::get('/decouverte', [DashboardController::class, 'decouverte'])->name('decouverte');
+    Route::get('/portfolio', [DashboardController::class, 'portfolio'])->name('portfolio');
+    Route::get('/alerte/preferences', [DashboardController::class, 'alerte'])->name('alerte.preferences');
+    Route::get('/alertes', [DashboardController::class, 'liste'])->name('alertes');
+    Route::get('/transactions', [DashboardController::class, 'transactions'])->name('transactions');
+});
 
-Route::get("/dashboard_admin", [DashboardController::class, 'dashboardAdmin'])->name('dashboard_admin');
-Route::get("/liste_utilisateurs", [DashboardController::class, 'listUsers'])->name('list_users');
-Route::get("/roles_utilisateurs", [DashboardController::class, 'role'])->name('roles_utilisateurs');
-Route::get("/validation_utilisateurs", [DashboardController::class, 'validationUser'])->name('validation_utilisateurs');
-Route::get("/signalement_utilisateurs", [DashboardController::class, 'signalement'])->name('signalement_utilisateurs');
+// ------------------------ INCUBATEUR -----------------------
+Route::prefix('tableau-de-bord/incubateur')->name('incubateur.')->middleware(['auth', 'role:incubateur'])->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboardIncub'])->name('dashboard');
+
+    Route::get('/projets-incubes', [DashboardController::class, 'incubes'])->name('incubes');
+    Route::get('/selection', [DashboardController::class, 'selection'])->name('selection');
+    Route::get('/appel-lance', [DashboardController::class, 'lance'])->name('appel.lance');
+    Route::get('/nouvel-appel', [DashboardController::class, 'newAppel'])->name('appel.nouveau');
+
+    Route::get('/evenements', [DashboardController::class, 'listeIncub'])->name('evenements');
+    Route::get('/creation-evenement', [DashboardController::class, 'creation'])->name('evenements.creation');
+    Route::get('/equipe', [DashboardController::class, 'equipe'])->name('equipe');
+});

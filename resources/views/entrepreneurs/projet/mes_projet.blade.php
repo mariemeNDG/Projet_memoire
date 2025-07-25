@@ -11,7 +11,7 @@
                   <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1><i class="fas fa-project-diagram text-primary me-2"></i></h1>
-                    <a class="btn btn-primary" href="{{ route('newProjets-entrepreneur') }}">
+                    <a class="btn btn-primary" href="">
                         <i class="fas fa-plus me-1"></i> Nouveau projet
                     </a>
                 </div>
@@ -77,8 +77,8 @@
                                         <td>50K€</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('projetDetails-entrepreneur') }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('editProjets-entrepreneur') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                             </div>
                                         </td>
@@ -91,8 +91,8 @@
                                         <td>30K€</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('projetDetails-entrepreneur') }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('editProjets-entrepreneur') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                             </div>
                                         </td>
@@ -105,8 +105,8 @@
                                         <td>75K€</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('projetDetails-entrepreneur') }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                <a href="{{ route('editProjets-entrepreneur') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                             </div>
                                         </td>

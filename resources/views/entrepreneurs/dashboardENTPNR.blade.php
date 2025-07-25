@@ -3,7 +3,7 @@
 @section('content')
     <div class="pagetitle">
             <h1>Tableau de Bord</h1>
-          
+
         </div>
         <section class="section dashboard">
             <div class="row">
@@ -151,7 +151,7 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="list-group list-group-flush">
-                                    <a href="{{ route('projetDetails-entrepreneur') }}" class="list-group-item list-group-item-action">
+                                    <a href="" class="list-group-item list-group-item-action">
                                         <div class="d-flex justify-content-between">
                                             <small class="text-muted">Aujourd'hui</small>
                                         </div>
@@ -213,8 +213,8 @@
                                                 </td>
                                                 <td>12/06/2023</td>
                                                 <td>
-                                                    <a href="{{ route('projetDetails-entrepreneur') }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                    <a href="{{ route('editProjets-entrepreneur') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                    <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -230,8 +230,8 @@
                                                 </td>
                                                 <td>05/06/2023</td>
                                                 <td>
-                                                    <a href="{{ route('projetDetails-entrepreneur') }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                    <a href="{{ route('editProjets-entrepreneur') }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                    <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>

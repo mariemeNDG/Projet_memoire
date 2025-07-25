@@ -31,12 +31,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg"  width="40" height="40" alt="Profile" class="rounded-circle" >
-            <span class="d-none d-md-block dropdown-toggle ps-2">Ndeye</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->prenom }} {{ auth()->user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-              <a class="dropdown-item d-flex align-items-center" href="">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.edit') }}">
                 <i class="bi bi-person"></i>
                 <span>Mon Profil</span>
               </a>
@@ -50,12 +50,13 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="logout.php">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Se deconnecter</span>
-              </a>
-            </li>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="dropdown-item d-flex align-items-center py-2 px-3 text-danger">
+                    <i class="fas fa-sign-out-alt me-3" style="width: 20px;"></i>
+                    <span>Se déconnecter</span>
+                </button>
+            </form>
 
           </ul>
         </li>
