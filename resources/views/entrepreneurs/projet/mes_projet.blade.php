@@ -11,7 +11,7 @@
                   <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1><i class="fas fa-project-diagram text-primary me-2"></i></h1>
-                    <a class="btn btn-primary" href="">
+                    <a class="btn btn-primary" href="{{ route('entrepreneur.projet.create') }}">
                         <i class="fas fa-plus me-1"></i> Nouveau projet
                     </a>
                 </div>

@@ -2,11 +2,11 @@
 @section('title', 'Mes projets')
 @section('content')
     <div class="pagetitle">
-          
+
                     <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1><i class="fas fa-plus-circle text-primary me-2"></i>Nouveau Projet</h1>
-                    <a href="index.html" class="btn btn-outline-secondary">
+                    <a href="{{ route('entrepreneur.projets.create') }}" class="btn btn-outline-secondary">
                         <i class="fas fa-arrow-left me-1"></i> Retour
                     </a>
                 </div>

@@ -10,25 +10,25 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('admin.utilisateurs') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Utilisateurs</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('admin.roles') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Rôles</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('admin.validations') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Validation projets</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('admin.signalements') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Signalements</span>
                 </a>
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('entrepreneur.mentorat.demandes') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Mentorat</span>
                 </a>

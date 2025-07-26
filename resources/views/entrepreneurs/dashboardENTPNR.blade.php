@@ -183,7 +183,7 @@
                         <div class="card">
                             <div class="card-header bg-primary text-white">
                                 <h5><i class="fas fa-project-diagram me-2"></i>Mes projets récents</h5>
-                                <a href="projets/nouveau.html" class="btn btn-sm btn-light float-end">
+                                <a href="{{ route('entrepreneur.projets.create') }}" class="btn btn-sm btn-light float-end">
                                     <i class="fas fa-plus me-1"></i> Nouveau projet
                                 </a>
                             </div>

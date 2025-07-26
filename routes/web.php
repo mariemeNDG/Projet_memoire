@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
 
 // Accueil et auth
 Route::get('/', fn () => view('welcome'));
@@ -17,16 +18,21 @@ Route::middleware('auth')->group(function () {
 });
 
 // ------------------------- ADMIN -------------------------
-Route::prefix('tableau-de-bord/admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
+Route::prefix('admin/tableau-de-bord')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboardAdmin'])->name('dashboard');
-    Route::get('/utilisateurs', [DashboardController::class, 'listUsers'])->name('utilisateurs');
+
+    // ========================= GESTION DES UTILISATEURS =========================
+    Route::get('/utilisateurs', [AdminController::class, 'listUsers'])->name('utilisateurs');
+    Route::delete('/utilisateurs/{id}', [AdminController::class, 'deleteUser'])->name('utilisateurs.delete');
+
+
     Route::get('/roles', [DashboardController::class, 'role'])->name('roles');
     Route::get('/validations', [DashboardController::class, 'validationUser'])->name('validations');
     Route::get('/signalements', [DashboardController::class, 'signalement'])->name('signalements');
 });
 
 // ---------------------- ENTREPRENEUR ----------------------
-Route::prefix('tableau-de-bord/entrepreneur')->name('entrepreneur.')->middleware(['auth', 'role:entrepreneur'])->group(function () {
+Route::prefix('entrepreneur/tableau-de-bord')->name('entrepreneur.')->middleware(['auth', 'role:entrepreneur'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboardENTPNR'])->name('dashboard');
 
     Route::get('/mes-projets', [DashboardController::class, 'mesProjets'])->name('projets.index');
@@ -46,7 +52,7 @@ Route::prefix('tableau-de-bord/entrepreneur')->name('entrepreneur.')->middleware
 });
 
 // ------------------------- MENTOR -------------------------
-Route::prefix('tableau-de-bord/mentor')->name('mentor.')->middleware(['auth', 'role:mentor'])->group(function () {
+Route::prefix('mentor/tableau-de-bord')->name('mentor.')->middleware(['auth', 'role:mentor'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboardMentor'])->name('dashboard');
 
     Route::get('/accompagnement', [DashboardController::class, 'accompagnement'])->name('accompagnement');
@@ -57,7 +63,7 @@ Route::prefix('tableau-de-bord/mentor')->name('mentor.')->middleware(['auth', 'r
 });
 
 // ---------------------- INVESTISSEUR ----------------------
-Route::prefix('tableau-de-bord/investisseur')->name('investisseur.')->middleware(['auth', 'role:investisseur'])->group(function () {
+Route::prefix('investisseur/tableau-de-bord')->name('investisseur.')->middleware(['auth', 'role:investisseur'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboardInvess'])->name('dashboard');
 
     Route::get('/decouverte', [DashboardController::class, 'decouverte'])->name('decouverte');
@@ -68,7 +74,7 @@ Route::prefix('tableau-de-bord/investisseur')->name('investisseur.')->middleware
 });
 
 // ------------------------ INCUBATEUR -----------------------
-Route::prefix('tableau-de-bord/incubateur')->name('incubateur.')->middleware(['auth', 'role:incubateur'])->group(function () {
+Route::prefix('incubateur/tableau-de-bord')->name('incubateur.')->middleware(['auth', 'role:incubateur'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboardIncub'])->name('dashboard');
 
     Route::get('/projets-incubes', [DashboardController::class, 'incubes'])->name('incubes');

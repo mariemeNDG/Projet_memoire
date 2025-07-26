@@ -33,31 +33,46 @@
                             <table id="usersTable" class="table table-hover" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th width="5%">ID</th>
+                                        <th width="5%">N°</th>
                                         <th width="20%">Utilisateur</th>
-                                        <th width="15%">Type</th>
-                                        <th width="20%">Email</th>
-                                        <th width="15%">Inscription</th>
+                                        <th width="15%">Role</th>
+                                        <th width="15%">Téléphone</th>
+                                        <th width="10%">Inscription</th>
                                         <th width="15%">Statut</th>
                                         <th width="10%">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>#1254</td>
+                                    @forelse ($users as  $user)
+                                         <tr>
+                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <img src="../../../assets/images/utilisateurs/user1.jpg" class="rounded-circle me-2" width="40">
                                                 <div>
-                                                    <strong>Jean Dupont</strong><br>
-                                                    <small class="text-muted">Dakar, Sénégal</small>
+                                                    <strong>{{ $user->prenom }} {{ $user->name }}</strong><br>
+                                                    <small class="text-muted">{{ $user->adresse ?? '' }}</small>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><span class="badge bg-info">Porteur</span></td>
-                                        <td>jean.dupont@example.com</td>
-                                        <td>15/03/2023</td>
-                                        <td><span class="badge bg-success">Actif</span></td>
+                                        <td>
+                                            @if($user->roles->count())
+                                                @foreach($user->roles as $role)
+                                                    <span class="badge bg-secondary">{{ $role->name }}</span>
+                                                @endforeach
+                                            @else
+                                                <span class="text-muted">Aucun</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->telephone ?? 'N/A' }}</td>
+                                        <td>{{ $user->created_at->format('d/m/Y') ?? '' }}</td>
+                                        <td>
+                                            @if($user->status === 1)
+                                                <span class="badge bg-success">Actif</span>
+                                            @else
+                                                <span class="badge bg-danger">Inactif</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="btn-group btn-group-sm">
                                                 <button class="btn btn-outline-primary" title="Voir">
@@ -66,10 +81,23 @@
                                                 <button class="btn btn-outline-secondary" title="Éditer">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
+
+                                                <form action="{{ route('admin.utilisateurs.delete', $user->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- Plus d'utilisateurs... -->
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-danger text-center">Aucun utilisateur trouvé.</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

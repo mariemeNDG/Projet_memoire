@@ -183,10 +183,7 @@ class DashboardController extends Controller
         return view('admin.dashboardAdmin');
     }
 
-    public function listUsers()
-    {
-        return view('admin.utilisateur.listeUser');
-    }
+
 
     public function role()
     {

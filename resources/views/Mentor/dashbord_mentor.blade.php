@@ -68,7 +68,7 @@
                 <div class="card mt-4">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Dernières évaluations</h5>
-                        <a href="{{ route('donnee_evaluation_mentor') }}" class="btn btn-light btn-sm">
+                        <a href="" class="btn btn-light btn-sm">
                             Voir tout
                         </a>
                     </div>

@@ -10,7 +10,7 @@
                         <h1 class="h4 mb-0">
                             <i class="bi bi-person-gear me-2"></i>Modifier mon profil
                         </h1>
-                        <a href="{{ route('dashboard') }}" class="btn btn-sm btn-light">
+                        <a href="{{ route('dashboard.main') }}" class="btn btn-sm btn-light">
                             <i class="bi bi-arrow-left me-1"></i> Retour
                         </a>
                     </div>
