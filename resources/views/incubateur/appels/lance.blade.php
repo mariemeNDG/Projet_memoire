@@ -5,14 +5,14 @@
                <div class="container-fluid mt-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1><i class="fas fa-bullhorn me-2"></i>Appels à projets lancés</h1>
-                    
+
 
                <div></div>
                     <div>
                    <button class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#statsModal">
                             <i class="fas fa-chart-bar me-1"></i> Statistiques
                         </button>
-                        <button class="btn btn-primary" onclick="window.location.href='{{ route('nouveau_projet') }}'">
+                        <button class="btn btn-primary" onclick="window.location.href='{{ route('incubateur.appel.nouveau') }}'">
                             <i class="fas fa-plus me-1"></i> Nouvel appel
                         </button>
                     </div>

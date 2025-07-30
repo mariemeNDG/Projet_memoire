@@ -59,10 +59,7 @@ class DashboardController extends Controller
         return view('entrepreneurs.incubateurs.candidature');
     }
 
-    public function recherches()
-    {
-        return view('entrepreneurs.incubateurs.recherche');
-    }
+    
 
     public function financements()
     {

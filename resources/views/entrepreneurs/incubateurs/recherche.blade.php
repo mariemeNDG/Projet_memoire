@@ -2,165 +2,91 @@
 @section('title', 'Recherche Incubateurs')
 @section('content')
     <div class="pagetitle">
-            <h1><i class="fas fa-building text-primary me-2"></i>Recherche d'Incubateurs </h1>
-         <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">Tableau de Bord</li>
-                    <li class="breadcrumb-item active">Incubateurs</li>
-                </ol>
-            </nav>
+        <h1><i class="fas fa-building text-primary me-2"></i>Recherche d'Incubateurs</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('entrepreneur.dashboard') }}">Tableau de Bord</a></li>
+                <li class="breadcrumb-item active">Incubateurs</li>
+            </ol>
+        </nav>
+    </div>
 
-            <div class="container-fluid mt-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1></h1>
-                    <div class="d-flex">
-                        <button class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#filterModal">
-                            <i class="fas fa-filter me-1"></i> Filtres
-                        </button>
-                        <button class="btn btn-outline-primary">
-                            <i class="fas fa-map-marker-alt me-1"></i> Carte
-                        </button>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <div class="search-bar">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Rechercher un incubateur...">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 incubator-card">
-                            <img src="../../../assets/images/incubateurs/incubateur1.jpg" class="card-img-top" alt="TechHub">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="card-title">TechHub Dakar</h5>
-                                    <span class="badge bg-success">Ouvert</span>
-                                </div>
-                                <p class="card-text text-muted">
-                                    <i class="fas fa-map-marker-alt me-1"></i> Dakar, Sénégal
-                                </p>
-                                <p class="card-text">Spécialisé dans les technologies innovantes et l'IA avec un programme d'accompagnement de 12 mois.</p>
-                                <div class="mb-3">
-                                    <span class="badge bg-light text-dark me-1">Technologie</span>
-                                    <span class="badge bg-light text-dark me-1">IA</span>
-                                    <span class="badge bg-light text-dark">Startup</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <small class="text-muted">4.7 (128 avis)</small>
-                                    </div>
-                                    <small class="text-muted">Prochaine session: 15/07/2023</small>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-white">
-                                <a href="details.html" class="btn btn-outline-primary me-2">
-                                    <i class="fas fa-info-circle me-1"></i> Détails
-                                </a>
-                                <a href="postuler.html" class="btn btn-primary">
-                                    <i class="fas fa-paper-plane me-1"></i> Postuler
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 incubator-card">
-                            <img src="../../../assets/images/incubateurs/incubateur2.jpg" class="card-img-top" alt="GreenValley">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="card-title">GreenValley</h5>
-                                    <span class="badge bg-success">Ouvert</span>
-                                </div>
-                                <p class="card-text text-muted">
-                                    <i class="fas fa-map-marker-alt me-1"></i> Thiès, Sénégal
-                                </p>
-                                <p class="card-text">Incubateur dédié aux projets environnementaux et d'économie circulaire avec accès à des laboratoires spécialisés.</p>
-                                <div class="mb-3">
-                                    <span class="badge bg-light text-dark me-1">Environnement</span>
-                                    <span class="badge bg-light text-dark me-1">Écologie</span>
-                                    <span class="badge bg-light text-dark">Durabilité</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <small class="text-muted">4.5 (92 avis)</small>
-                                    </div>
-                                    <small class="text-muted">Prochaine session: 01/08/2023</small>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-white">
-                                <a href="details.html" class="btn btn-outline-primary me-2">
-                                    <i class="fas fa-info-circle me-1"></i> Détails
-                                </a>
-                                <a href="postuler.html" class="btn btn-primary">
-                                    <i class="fas fa-paper-plane me-1"></i> Postuler
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 incubator-card">
-                            <img src="../../../assets/images/incubateurs/incubateur3.jpg" class="card-img-top" alt="AgriBoost">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h5 class="card-title">AgriBoost</h5>
-                                    <span class="badge bg-warning">Bientôt</span>
-                                </div>
-                                <p class="card-text text-muted">
-                                    <i class="fas fa-map-marker-alt me-1"></i> Saint-Louis, Sénégal
-                                </p>
-                                <p class="card-text">Programme d'accélération pour les startups agricoles avec accès à des terres expérimentales et des experts.</p>
-                                <div class="mb-3">
-                                    <span class="badge bg-light text-dark me-1">Agriculture</span>
-                                    <span class="badge bg-light text-dark me-1">AgroTech</span>
-                                    <span class="badge bg-light text-dark">Innovation</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <small class="text-muted">4.3 (76 avis)</small>
-                                    </div>
-                                    <small class="text-muted">Prochaine session: 10/09/2023</small>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-white">
-                                <a href="details.html" class="btn btn-outline-primary me-2">
-                                    <i class="fas fa-info-circle me-1"></i> Détails
-                                </a>
-                                <button class="btn btn-primary" disabled>
-                                    <i class="fas fa-clock me-1"></i> Bientôt
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <nav aria-label="Page navigation" class="mt-4">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Suivant</a>
-                        </li>
-                    </ul>
-                </nav>
+    <div class="container-fluid mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1></h1>
+            <div class="d-flex">
+                <button class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#filterModal">
+                    <i class="fas fa-filter me-1"></i> Filtres
+                </button>
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-map-marker-alt me-1"></i> Carte
+                </button>
             </div>
         </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <form action="{{ route('entrepreneur.incubateur.recherches') }}" method="GET">
+                    <div class="search-bar input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Rechercher un incubateur..."
+                               value="{{ request('search') }}">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @if($incubateurs->isEmpty())
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle me-2"></i> Aucun incubateur trouvé
+            </div>
+        @else
+            <div class="row">
+                @foreach($incubateurs as $incubateur)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 incubator-card">
+                        @if($incubateur->photo)
+                        <img src="{{ asset('storage/'.$incubateur->photo) }}" class="card-img-top" alt="{{ $incubateur->nom }}" style="height: 200px; object-fit: cover;">
+                        @else
+                        <div class="bg-secondary text-white text-center p-5" style="height: 200px;">
+                            <i class="fas fa-building fa-3x"></i>
+                            <p class="mt-2">Pas de photo</p>
+                        </div>
+                        @endif
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">{{ $incubateur->nom }}</h5>
+                                <span class="badge bg-success">Disponible</span>
+                            </div>
+                            <p class="card-text text-muted">
+                                <i class="fas fa-map-marker-alt me-1"></i> {{ $incubateur->adresse }}
+                            </p>
+                            <p class="card-text">{{ Str::limit($incubateur->description, 100) }}</p>
+                            @if($incubateur->secteur)
+                            <div class="">
+                                @foreach(explode(',', $incubateur->secteur) as $secteur)
+                                <span class="badge bg-light text-dark me-1 mb-1">{{ trim($secteur) }}</span>
+                                @endforeach
+                            </div>
+                            @endif
+
+                        </div>
+                        <div class="card-footer bg-white">
+                            <a href="{{ route('entrepreneur.incubateur.postuler', $incubateur) }}" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-1"></i> Postuler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            <nav aria-label="Page navigation" class="mt-4">
+                {{ $incubateurs->links() }}
+            </nav>
+        @endif
     </div>
 
     <!-- Modal Filtres -->
@@ -171,66 +97,72 @@
                     <h5 class="modal-title" id="filterModalLabel">Filtrer les incubateurs</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="filterForm">
+                <form action="{{ route('entrepreneur.incubateur.recherches') }}" method="GET">
+                    <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Secteurs</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="techCheck" checked>
+                                <input class="form-check-input" type="checkbox" name="secteurs[]" value="Technologie" id="techCheck"
+                                    {{ in_array('Technologie', request('secteurs', [])) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="techCheck">Technologie</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="agriCheck">
+                                <input class="form-check-input" type="checkbox" name="secteurs[]" value="Agriculture" id="agriCheck"
+                                    {{ in_array('Agriculture', request('secteurs', [])) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="agriCheck">Agriculture</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="envCheck" checked>
+                                <input class="form-check-input" type="checkbox" name="secteurs[]" value="Environnement" id="envCheck"
+                                    {{ in_array('Environnement', request('secteurs', [])) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="envCheck">Environnement</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="healthCheck">
+                                <input class="form-check-input" type="checkbox" name="secteurs[]" value="Santé" id="healthCheck"
+                                    {{ in_array('Santé', request('secteurs', [])) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="healthCheck">Santé</label>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="locationSelect" class="form-label">Localisation</label>
-                            <select class="form-select" id="locationSelect">
-                                <option value="" selected>Toutes régions</option>
-                                <option value="dakar">Dakar</option>
-                                <option value="thies">Thiès</option>
-                                <option value="saint-louis">Saint-Louis</option>
-                            </select>
+                            <input type="text" class="form-control" name="localisation" placeholder="Ville ou région"
+                                   value="{{ request('localisation') }}">
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Disponibilité</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="availability" id="availNow" checked>
-                                <label class="form-check-label" for="availNow">Ouvert aux candidatures</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="availability" id="availSoon">
-                                <label class="form-check-label" for="availSoon">Prochaines sessions</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Note minimale</label>
-                            <div class="d-flex align-items-center">
-                                <input type="range" class="form-range me-3" min="0" max="5" step="0.5" value="3.5" id="ratingRange">
-                                <span id="ratingValue">3.5</span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Appliquer les filtres</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ route('entrepreneur.incubateur.recherches') }}" class="btn btn-outline-danger me-auto">
+                            Réinitialiser
+                        </a>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Appliquer</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-        </section>
+    <style>
+        .incubator-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .incubator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .search-bar {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+    </style>
+
+    <script>
+        // Script pour afficher la valeur du range
+        document.getElementById('ratingRange').addEventListener('input', function() {
+            document.getElementById('ratingValue').textContent = this.value;
+        });
+    </script>
 @endsection

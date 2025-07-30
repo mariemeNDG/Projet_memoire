@@ -1,9 +1,45 @@
 @extends('index')
 @section('title', 'Tableau de Bord Mentor')
 @section('content')
-    <div class="pagetitle">
-                    <div class="container-fluid mt-4">
-
+            <div class="container-fluid mt-4">
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-primary text-white">
+                            <div class="card-body">
+                                <i class="fas fa-hands-helping"></i>
+                                <h2>5</h2>
+                                <p>Projets accompagnés</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-success text-white">
+                            <div class="card-body">
+                                <i class="fas fa-clock"></i>
+                                <h2>12h</h2>
+                                <p>Ce mois-ci</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-info text-white">
+                            <div class="card-body">
+                                <i class="fas fa-star"></i>
+                                <h2>4.8</h2>
+                                <p>Note moyenne</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card bg-warning text-dark">
+                            <div class="card-body">
+                                <i class="fas fa-bell"></i>
+                                <h2>3</h2>
+                                <p>Nouvelles demandes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-lg-8">
@@ -68,7 +104,7 @@
                 <div class="card mt-4">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Dernières évaluations</h5>
-                        <a href="" class="btn btn-light btn-sm">
+                        <a href="evaluations/donnees.html" class="btn btn-light btn-sm">
                             Voir tout
                         </a>
                     </div>
@@ -100,7 +136,24 @@
         </div>
     </div>
 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/mentors.js"></script>
+    <script>
+        // Initialisation du calendrier de disponibilité
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ici vous intégreriez un calendrier (FullCalendar, etc.)
+            const availabilityEl = document.getElementById('mentorAvailability');
+            if (availabilityEl) {
+                availabilityEl.innerHTML = `
+                    <div class="text-center py-3 text-muted">
+                        <i class="fas fa-calendar-alt fa-2x mb-2"></i>
+                        <p>Votre calendrier de disponibilité sera affiché ici</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
     <script src="../../js/main.js"></script>
     <script src="../../js/mentors.js"></script>
     <script>

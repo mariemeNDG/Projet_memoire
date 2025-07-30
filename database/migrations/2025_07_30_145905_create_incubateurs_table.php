@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('porteurs', function (Blueprint $table) {
+        Schema::create('incubateurs', function (Blueprint $table) {
             $table->id();
-            $table->string('nom')->comment('Nom du porteur');
+            $table->string('nom');
+            $table->string('adresse');
+            $table->string('telephone')->nullable();
+            $table->string('secteur')->nullable();
+            $table->text('description')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('porteurs');
+        Schema::dropIfExists('incubateurs');
     }
 };

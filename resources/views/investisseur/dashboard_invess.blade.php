@@ -1,8 +1,6 @@
 @extends('index')
 @section('title', 'Dashboard Investisseur')
 @section('content')
-    <div class="pagetitle">
-
             <div class="container-fluid mt-4">
                 <!-- Stats Cards -->
                 <div class="row">

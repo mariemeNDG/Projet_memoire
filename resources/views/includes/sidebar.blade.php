@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.roles') }}">
+                <a class="nav-link collapsed" href="{{ route('admin.roles.index') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Rôles</span>
                 </a>
@@ -43,6 +43,7 @@
                     <span>Dashboard Entrepreneur</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('entrepreneur.projets.index') }}">
                     <i class="bi bi-card-list"></i>
@@ -50,31 +51,31 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('entrepreneur.mentorat.demandes') }}">
+                <a class="nav-link collapsed" href="{{ route('entrepreneur.mentorat.index') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Mentorat</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('entrepreneur.mentorat.sessions') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Sessions</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('entrepreneur.incubateur.candidatures') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Incubateur</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('entrepreneur.financement.recherche') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Financement</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('entrepreneur.financement.propositions') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Proposition</span>
                 </a>
@@ -90,31 +91,31 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('mentor.accompagnement') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Accompagnement</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('mentor.disponibilite') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Projets disponibles</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('mentor.calendrier') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Disponibilités</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('mentor.preferences') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Préférences Mentor</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('mentor.evaluations') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Évaluations</span>
                 </a>
@@ -130,31 +131,31 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('investisseur.decouverte') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Découverte</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('investisseur.portfolio') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Portfolio</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('investisseur.alerte.preferences') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Préférences d'alerte</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('investisseur.alertes') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Historique des alertes</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('investisseur.transactions') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Transactions</span>
                 </a>
@@ -170,31 +171,31 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('incubateur.incubes') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Projets incubés</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('incubateur.selection') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Sélection</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('incubateur.appel.lance') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Appels à projets</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('incubateur.evenements') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Évènements</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('incubateur.equipe') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Équipe</span>
                 </a>

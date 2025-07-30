@@ -41,7 +41,7 @@ class UserSeeder extends Seeder
         // Incubateur
         $incubateur = User::create([
             'name' => 'Incubateur User',
-            'email' => '',
+            'email' => 'incubateur@example.com',
             'password' => Hash::make('password'),
         ]);
         $incubateur->assignRole('incubateur');

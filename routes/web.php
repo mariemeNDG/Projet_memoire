@@ -3,6 +3,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Entrepreneur\MentoratController;
+use App\Http\Controllers\Entrepreneur\ProjetController;
+use App\Models\Mentorat;
 
 // Accueil et auth
 Route::get('/', fn () => view('welcome'));
@@ -26,7 +30,15 @@ Route::prefix('admin/tableau-de-bord')->name('admin.')->middleware(['auth', 'rol
     Route::delete('/utilisateurs/{id}', [AdminController::class, 'deleteUser'])->name('utilisateurs.delete');
 
 
-    Route::get('/roles', [DashboardController::class, 'role'])->name('roles');
+    // Page principale
+    Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+
+    // CRUD
+    Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('/roles/{role}', [RoleController::class, 'show'])->name('roles.show');
+    Route::put('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+
     Route::get('/validations', [DashboardController::class, 'validationUser'])->name('validations');
     Route::get('/signalements', [DashboardController::class, 'signalement'])->name('signalements');
 });
@@ -35,17 +47,26 @@ Route::prefix('admin/tableau-de-bord')->name('admin.')->middleware(['auth', 'rol
 Route::prefix('entrepreneur/tableau-de-bord')->name('entrepreneur.')->middleware(['auth', 'role:entrepreneur'])->group(function () {
     Route::get('/', [DashboardController::class, 'dashboardENTPNR'])->name('dashboard');
 
-    Route::get('/mes-projets', [DashboardController::class, 'mesProjets'])->name('projets.index');
-    Route::get('/nouveau-projet', [DashboardController::class, 'newProjets'])->name('projets.create');
-    Route::get('/editer-projet', [DashboardController::class, 'editProjets'])->name('projets.edit');
-    Route::get('/detail-projet', [DashboardController::class, 'projetDetails'])->name('projets.detail');
+    // CRUD PROJET
+    Route::resource('projets',ProjetController::class)->names('projets');
 
-    Route::get('/demandes', [DashboardController::class, 'demandes'])->name('mentorat.demandes');
-    Route::get('/nouvelle-demande', [DashboardController::class, 'newDemandes'])->name('mentorat.nouvelle');
+    // Routes mentorat
+    Route::get('/mentorat', [MentoratController::class, 'index'])->name('mentorat.index');
+    Route::get('/mentorat/nouvelle', [MentoratController::class, 'create'])->name('mentorat.create');
+    Route::post('/mentorat', [MentoratController::class, 'store'])->name('mentorat.store');
+    Route::get('/mentorat/{mentorat}', [MentoratController::class, 'show'])->name('mentorat.show');
+    Route::delete('/mentorat/{mentorat}', [MentoratController::class, 'destroy'])->name('mentorat.destroy');
+
+
     Route::get('/sessions', [DashboardController::class, 'sessions'])->name('mentorat.sessions');
 
-    Route::get('/candidatures', [DashboardController::class, 'candidatures'])->name('incubateur.candidatures');
-    Route::get('/recherches', [DashboardController::class, 'recherches'])->name('incubateur.recherches');
+    Route::get('/candidatures', [MentoratController::class, 'candidatures'])->name('incubateur.candidatures');
+    Route::get('/recherches', [MentoratController::class, 'recherches'])->name('incubateur.recherches');
+
+    Route::get('/postuler/{incubateur}', [MentoratController::class, 'postuler'])->name('incubateur.postuler');
+    Route::post('/postuler/{incubateur}', [MentoratController::class, 'storeCandidature'])->name('incubateur.store-candidature');
+    Route::get('/candidatures', [MentoratController::class, 'candidatures'])->name('incubateur.candidatures');
+    Route::delete('/candidatures/{candidature}', [MentoratController::class, 'annulerCandidature'])->name('incubateur.annuler-candidature');
 
     Route::get('/financements', [DashboardController::class, 'financements'])->name('financement.recherche');
     Route::get('/propositions', [DashboardController::class, 'proposition'])->name('financement.propositions');

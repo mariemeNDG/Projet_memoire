@@ -10,7 +10,7 @@
                         <button class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#filtersModal">
                             <i class="fas fa-filter me-1"></i> Filtres
                         </button>
-                        <button class="btn btn-primary" onclick="window.location.href='{{ route('nouveau_projet') }}'">
+                        <button class="btn btn-primary" onclick="window.location.href='{{ route('incubateur.evenements.creation') }}'">
                             <i class="fas fa-plus me-1"></i> Nouvel événement
                         </button>
                     </div>
