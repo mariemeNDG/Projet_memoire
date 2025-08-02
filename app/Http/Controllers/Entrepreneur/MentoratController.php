@@ -128,40 +128,44 @@ class MentoratController extends Controller
 
     public function storeCandidature(Request $request, Incubateur $incubateur)
     {
-        $validated = $request->validate([
-            'projet_id' => 'required|exists:projets,id',
-            'motivation' => 'required|string|min:100',
-            'business_plan' => 'required|file|mimes:pdf|max:2048',
-            'equipe' => 'required|array',
-            'equipe.*.nom' => 'required|string',
-            'equipe.*.role' => 'required|string',
-            'budget_previsionnel' => 'required|numeric',
-            'duree_incubation' => 'required|string',
-            'besoins_specifiques' => 'nullable|array'
-        ]);
+        try {
+            $validated = $request->validate([
+                'projet_id' => 'required|exists:projets,id',
+                'motivation' => 'required|string|min:5',
+                'business_plan' => 'required|file|mimes:pdf|max:2048',
+                'equipe' => 'required|integer|min:1',
+                'budget_previsionnel' => 'required|numeric',
+                'duree_incubation' => 'required|string',
+                'besoins_specifiques' => 'nullable|array'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return back()->withErrors($e->validator)->withInput();
+        }
 
         // Vérifier que le projet appartient bien à l'utilisateur
         if (!auth()->user()->projets()->where('id', $request->projet_id)->exists()) {
-            return back()->with('error', 'Projet non trouvé');
+            return back()->with('error', 'Projet non trouvé')->withInput();
         }
 
-        // Enregistrer le business plan
-        $businessPlanPath = $request->file('business_plan')->store('incubateur/candidatures/business-plans');
+        try {
+            // Enregistrer le business plan
+            $businessPlanPath = $request->file('business_plan')->store('incubateur/candidatures/business-plans');
 
-        $candidature = IncubateurCandidature::create([
-            'incubateur_id' => $incubateur->id,
-            'projet_id' => $request->projet_id,
-            'user_id' => auth()->id(),
-            'motivation' => $request->motivation,
-            'business_plan' => $businessPlanPath,
-            'equipe' => json_encode($request->equipe),
-            'budget_previsionnel' => $request->budget_previsionnel,
-            'duree_incubation' => $request->duree_incubation,
-            'besoins_specifiques' => json_encode($request->besoins_specifiques ?? []),
-            'statut' => 'en_attente'
-        ]);
-
-        
+            $candidature = IncubateurCandidature::create([
+                'incubateur_id' => $incubateur->id,
+                'projet_id' => $request->projet_id,
+                'user_id' => auth()->id(),
+                'motivation' => $request->motivation,
+                'business_plan' => $businessPlanPath,
+                'equipe' => $request->equipe,
+                'budget_previsionnel' => $request->budget_previsionnel,
+                'duree_incubation' => $request->duree_incubation,
+                'besoins_specifiques' => json_encode($request->besoins_specifiques ?? []),
+                'statut' => 'en_attente'
+            ]);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erreur lors de la soumission : ' . $e->getMessage())->withInput();
+        }
 
         return redirect()->route('entrepreneur.incubateur.candidatures')
             ->with('success', 'Votre candidature a été soumise avec succès');

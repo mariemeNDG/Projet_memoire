@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('business_plan')->nullable(); // Fichier PDF
 
             // Informations complémentaires
-            $table->json('equipe')->nullable(); // Membres de l'équipe
+            $table->integer('equipe')->default(1); // Membres de l'équipe
             $table->decimal('budget_previsionnel', 12, 2)->nullable();
             $table->string('duree_incubation')->nullable(); // Durée souhaitée
             $table->json('besoins_specifiques')->nullable(); // Besoins particuliers

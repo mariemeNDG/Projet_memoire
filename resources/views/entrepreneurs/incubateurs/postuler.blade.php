@@ -13,6 +13,15 @@
 </div>
 
 <div class="container-fluid mt-4">
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <div class="card">
         <div class="card-header bg-primary text-white">
             <h5 class="mb-0">Formulaire de candidature</h5>
@@ -48,21 +57,10 @@
                     <div id="equipeContainer">
                         <div class="row mb-2 equipe-member">
                             <div class="col-md-5">
-                                <input type="text" class="form-control" name="equipe[0][nom]" placeholder="Nom complet" required>
-                            </div>
-                            <div class="col-md-5">
-                                <input type="text" class="form-control" name="equipe[0][role]" placeholder="Rôle dans le projet" required>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-danger w-100 remove-member" disabled>
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                <input type="number" class="form-control" name="equipe">
                             </div>
                         </div>
                     </div>
-                    <button type="button" id="addMemberBtn" class="btn btn-sm btn-outline-primary mt-2">
-                        <i class="fas fa-plus me-1"></i> Ajouter un membre
-                    </button>
                 </div>
 
                 <div class="row mb-3">
