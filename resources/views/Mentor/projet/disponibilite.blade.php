@@ -18,52 +18,45 @@
                 </div>
 
                 <div class="row">
-                    <!-- Projet 1 -->
-                    <div class="col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-img-top project-image" style="background-image: url('../../../assets/images/projets/projet3.jpg');"></div>
-                            <div class="card-body">
-                                <h5 class="card-title">MediTrack</h5>
-                                <p class="card-text text-muted">
-                                    <i class="fas fa-map-marker-alt me-1"></i> Tunis, Tunisie
-                                </p>
-                                <p class="card-text">Dispositif IoT de suivi médical pour patients chroniques avec alertes en temps réel pour les médecins.</p>
-                                <div class="mb-3">
-                                    <span class="badge bg-light text-dark me-1">Santé</span>
-                                    <span class="badge bg-light text-dark">Technologie</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-user-tie text-info"></i>
-                                        <small class="text-muted ms-1">1 mentor actuel</small>
+                    @foreach($demandes_mentors as $demande)
+                        <div class="col-lg-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-img-top project-image" style="background-image: url('../../../assets/images/projets/projet3.jpg');"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $demande->projet->nom }}</h5>
+                                    <p class="card-text text-muted">
+                                        {!! $demande->status_badge !!}
+                                    </p>
+                                    <p class="card-text">{{ $demande->projet->description }}</p>
+                                    <div class="mb-3">
+                                        @foreach($demande->domaine_accompagnement as $domaine)
+                                            <span class="badge bg-light text-dark">{{ $domaine }}</span>
+                                        @endforeach
                                     </div>
-                                    <div>
-                                        <i class="fas fa-clock text-primary"></i>
-                                        <small class="text-muted ms-1">5h/semaine</small>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-user-tie text-info"></i>
+                                            <small class="text-muted ms-1">1 mentor actuel</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-clock text-primary"></i>
+                                            <small class="text-muted ms-1"> {{ $demande->disponibilites }}</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer bg-white">
-                                <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#expressInterestModal">
-                                    <i class="fas fa-hand-paper me-1"></i> Exprimer son intérêt
-                                </button>
+                                <div class="card-footer bg-white">
+                                    <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#expressInterestModal">
+                                        <i class="fas fa-hand-paper me-1"></i> Exprimer son intérêt
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Plus de projets... -->
+                    @endforeach
                 </div>
 
                 <nav aria-label="Projects pagination">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Suivant</a>
-                        </li>
+                        {{ $demandes_mentors->links() }}
                     </ul>
                 </nav>
             </div>

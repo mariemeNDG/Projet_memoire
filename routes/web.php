@@ -4,8 +4,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Entrepreneur\FinancementController;
 use App\Http\Controllers\Entrepreneur\MentoratController;
 use App\Http\Controllers\Entrepreneur\ProjetController;
+use App\Http\Controllers\Investisseur\InvestisseurController;
+use App\Models\Financement;
 use App\Models\Mentorat;
 
 // Accueil et auth
@@ -68,7 +71,8 @@ Route::prefix('entrepreneur/tableau-de-bord')->name('entrepreneur.')->middleware
     Route::get('/candidatures', [MentoratController::class, 'candidatures'])->name('incubateur.candidatures');
     Route::delete('/candidatures/{candidature}', [MentoratController::class, 'annulerCandidature'])->name('incubateur.annuler-candidature');
 
-    Route::get('/financements', [DashboardController::class, 'financements'])->name('financement.recherche');
+    Route::get('/financements', [FinancementController::class, 'index'])->name('financement.recherche');
+    Route::post('/financements', [FinancementController::class, 'store'])->name('financement.store');
     Route::get('/propositions', [DashboardController::class, 'proposition'])->name('financement.propositions');
 });
 
@@ -77,7 +81,7 @@ Route::prefix('mentor/tableau-de-bord')->name('mentor.')->middleware(['auth', 'r
     Route::get('/', [DashboardController::class, 'dashboardMentor'])->name('dashboard');
 
     Route::get('/accompagnement', [DashboardController::class, 'accompagnement'])->name('accompagnement');
-    Route::get('/disponibilites', [DashboardController::class, 'disponibilite'])->name('disponibilite');
+    Route::get('/disponibilites', [MentoratController::class, 'disponibilite'])->name('disponibilite');
     Route::get('/calendrier', [DashboardController::class, 'calendrier'])->name('calendrier');
     Route::get('/preferences', [DashboardController::class, 'preference'])->name('preferences');
     Route::get('/evaluations', [DashboardController::class, 'evaluation'])->name('evaluations');
@@ -85,10 +89,19 @@ Route::prefix('mentor/tableau-de-bord')->name('mentor.')->middleware(['auth', 'r
 
 // ---------------------- INVESTISSEUR ----------------------
 Route::prefix('investisseur/tableau-de-bord')->name('investisseur.')->middleware(['auth', 'role:investisseur'])->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboardInvess'])->name('dashboard');
+    Route::get('/', [InvestisseurController::class, 'dashboardInvess'])->name('dashboard');
 
-    Route::get('/decouverte', [DashboardController::class, 'decouverte'])->name('decouverte');
+    Route::get('/decouverte', [InvestisseurController::class, 'decouverte'])->name('decouverte');
+    Route::post('/investir', [InvestisseurController::class, 'investir'])
+    ->name('investir');
+
     Route::get('/portfolio', [DashboardController::class, 'portfolio'])->name('portfolio');
+    Route::get('/portfolio', [InvestisseurController::class, 'portfolio'])
+    ->name('portfolio');
+
+    Route::get('/investissement/{id}/details', [InvestisseurController::class, 'show'])
+    ->name('details');
+
     Route::get('/alerte/preferences', [DashboardController::class, 'alerte'])->name('alerte.preferences');
     Route::get('/alertes', [DashboardController::class, 'liste'])->name('alertes');
     Route::get('/transactions', [DashboardController::class, 'transactions'])->name('transactions');

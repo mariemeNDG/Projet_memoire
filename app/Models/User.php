@@ -67,4 +67,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(IncubateurCandidature::class);
     }
+
+    public function investissements()
+    {
+        return $this->hasMany(Investissement::class);
+    }
+    
 }

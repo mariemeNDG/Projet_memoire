@@ -131,27 +131,29 @@ class MentoratController extends Controller
         try {
             $validated = $request->validate([
                 'projet_id' => 'required|exists:projets,id',
-                'motivation' => 'required|string|min:5',
-                'business_plan' => 'required|file|mimes:pdf|max:2048',
-                'equipe' => 'required|integer|min:1',
-                'budget_previsionnel' => 'required|numeric',
-                'duree_incubation' => 'required|string',
+                'motivation' => 'required|string|min:10',
+                'business_plan' => 'nullable|file|mimes:pdf|max:2048',
+                'equipe' => 'nullable|integer|min:1',
+                'budget_previsionnel' => 'nullable|numeric',
+                'duree_incubation' => 'nullable|string',
                 'besoins_specifiques' => 'nullable|array'
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return back()->withErrors($e->validator)->withInput();
         }
 
-        // Vérifier que le projet appartient bien à l'utilisateur
+        // Vérifier que le projet appartient à l'utilisateur
         if (!auth()->user()->projets()->where('id', $request->projet_id)->exists()) {
             return back()->with('error', 'Projet non trouvé')->withInput();
         }
 
         try {
-            // Enregistrer le business plan
-            $businessPlanPath = $request->file('business_plan')->store('incubateur/candidatures/business-plans');
+            $businessPlanPath = null;
+            if ($request->hasFile('business_plan')) {
+                $businessPlanPath = $request->file('business_plan')->store('incubateur/candidatures/business-plans');
+            }
 
-            $candidature = IncubateurCandidature::create([
+            IncubateurCandidature::create([
                 'incubateur_id' => $incubateur->id,
                 'projet_id' => $request->projet_id,
                 'user_id' => auth()->id(),
@@ -163,6 +165,7 @@ class MentoratController extends Controller
                 'besoins_specifiques' => json_encode($request->besoins_specifiques ?? []),
                 'statut' => 'en_attente'
             ]);
+
         } catch (\Exception $e) {
             return back()->with('error', 'Erreur lors de la soumission : ' . $e->getMessage())->withInput();
         }
@@ -170,6 +173,7 @@ class MentoratController extends Controller
         return redirect()->route('entrepreneur.incubateur.candidatures')
             ->with('success', 'Votre candidature a été soumise avec succès');
     }
+
 
     public function candidatures()
     {
@@ -191,6 +195,30 @@ class MentoratController extends Controller
             : 0;
 
         return view('entrepreneurs.incubateurs.candidature', compact('candidatures', 'stats'));
+    }
+    public function annulerCandidature(IncubateurCandidature $candidature)
+    {
+        // Vérifier que la candidature appartient à l'utilisateur connecté
+        if ($candidature->user_id !== auth()->id()) {
+            abort(403, 'Vous n\'êtes pas autorisé à annuler cette candidature');
+        }
+
+        // Annuler la candidature
+        $candidature->delete();
+
+        return redirect()->route('entrepreneur.incubateur.candidatures')
+            ->with('success', 'Candidature annulée avec succès');
+    }
+
+    public function disponibilite()
+    {
+        // Récupérer les demandes de mentorat où l'utilisateur connecté est le mentor
+        $demandes_mentors = Mentorat::where('mentor_id', Auth::id())
+            ->with(['user', 'projet'])
+            ->latest()
+            ->paginate(10);
+
+        return view('Mentor.projet.disponibilite', compact('demandes_mentors'));
     }
 
 }

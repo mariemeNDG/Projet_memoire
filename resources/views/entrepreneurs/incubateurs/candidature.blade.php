@@ -63,7 +63,7 @@
                                     </div>
                                 </td>
                                 <td>{{ $candidature->projet->nom }}</td>
-                                <td>{{ $candidature->created_at->format('d/m/Y') }}</td>
+                                <td>{{ optional($candidature->created_at)->format('d/m/Y') ?? 'N/A' }}</td>
                                 <td>
                                     @if($candidature->statut == 'accepte')
                                         <span class="badge bg-success">Acceptée</span>
@@ -115,10 +115,18 @@
                                                 </div>
                                             </div>
 
-                                            <div class="mb-4">
-                                                <h6>Motivation</h6>
-                                                <p>{{ $candidature->motivation }}</p>
-                                            </div>
+                                           <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <h6>Motivation</h6>
+                                                    <p>{{ $candidature->motivation }}</p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <h6>Equipe</h6>
+                                                    <p>{{ $candidature->equipe }}</p>
+                                                </div>
+
+                                           </div>
 
                                             <div class="row mb-4">
                                                 <div class="col-md-6">
@@ -141,28 +149,6 @@
                                                 </div>
                                             </div>
                                             @endif
-
-                                            <div class="mb-4">
-                                                <h6>Équipe</h6>
-                                                <div class="table-responsive">
-                                                    <table class="table table-sm">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Nom</th>
-                                                                <th>Rôle</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach(json_decode($candidature->equipe) as $membre)
-                                                            <tr>
-                                                                <td>{{ $membre->nom }}</td>
-                                                                <td>{{ $membre->role }}</td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
 
                                             <div class="mb-3">
                                                 <a href="{{ asset('storage/'.$candidature->business_plan) }}" class="btn btn-outline-primary" target="_blank">

@@ -59,7 +59,7 @@ class DashboardController extends Controller
         return view('entrepreneurs.incubateurs.candidature');
     }
 
-    
+
 
     public function financements()
     {
@@ -82,10 +82,7 @@ class DashboardController extends Controller
     }
 
 
-    public function disponibilite()
-    {
-        return view('Mentor.projet.disponibilite');
-    }
+    
 
     public function calendrier()
     {
@@ -101,21 +98,6 @@ class DashboardController extends Controller
     public function evaluation()
     {
         return view('Mentor.evaluation.donnee');
-    }
-
-    public function dashboardInvess()
-    {
-        return view('investisseur.dashboard_invess');
-    }
-
-    public function decouverte()
-    {
-        return view('investisseur.projet.decouverte');
-    }
-
-    public function portfolio()
-    {
-        return view('investisseur.projet.portfolio');
     }
 
     public function alerte()

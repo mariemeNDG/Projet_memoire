@@ -67,7 +67,7 @@
                             @if($incubateur->secteur)
                             <div class="">
                                 @foreach(explode(',', $incubateur->secteur) as $secteur)
-                                <span class="badge bg-light text-dark me-1 mb-1">{{ trim($secteur) }}</span>
+                                    <span class="badge bg-light text-dark me-1 mb-1">{{ trim($secteur) }}</span>
                                 @endforeach
                             </div>
                             @endif

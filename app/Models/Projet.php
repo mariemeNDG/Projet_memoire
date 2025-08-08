@@ -48,4 +48,14 @@ class Projet extends Model
 
         return '<span class="badge '.($badges[$this->etat] ?? 'bg-dark').'">'.ucfirst($this->etat).'</span>';
     }
+
+    public function financements()
+    {
+        return $this->hasMany(Financement::class);
+    }
+
+    public function mentorats()
+    {
+        return $this->hasMany(Mentorat::class);
+    }
 }

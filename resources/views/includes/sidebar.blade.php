@@ -108,18 +108,7 @@
                     <span>Disponibilités</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('mentor.preferences') }}">
-                    <i class="bi bi-card-list"></i>
-                    <span>Préférences Mentor</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('mentor.evaluations') }}">
-                    <i class="bi bi-card-list"></i>
-                    <span>Évaluations</span>
-                </a>
-            </li>
+            
         @endrole
 
         {{-- === INVESTISSEUR === --}}
@@ -133,25 +122,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('investisseur.decouverte') }}">
                     <i class="bi bi-card-list"></i>
-                    <span>Découverte</span>
+                    <span>Découvertes</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('investisseur.portfolio') }}">
                     <i class="bi bi-card-list"></i>
-                    <span>Portfolio</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('investisseur.alerte.preferences') }}">
-                    <i class="bi bi-card-list"></i>
-                    <span>Préférences d'alerte</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('investisseur.alertes') }}">
-                    <i class="bi bi-card-list"></i>
-                    <span>Historique des alertes</span>
+                    <span>Investissements</span>
                 </a>
             </li>
             <li class="nav-item">
