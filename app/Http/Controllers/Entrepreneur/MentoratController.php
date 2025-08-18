@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Entrepreneur;
 
 use App\Http\Controllers\Controller;
+use App\Models\Accompagnement;
 use App\Models\Incubateur;
 use App\Models\IncubateurCandidature;
 use App\Models\Mentorat;
@@ -10,6 +11,7 @@ use App\Models\Projet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class MentoratController extends Controller
 {
@@ -210,15 +212,6 @@ class MentoratController extends Controller
             ->with('success', 'Candidature annulée avec succès');
     }
 
-    public function disponibilite()
-    {
-        // Récupérer les demandes de mentorat où l'utilisateur connecté est le mentor
-        $demandes_mentors = Mentorat::where('mentor_id', Auth::id())
-            ->with(['user', 'projet'])
-            ->latest()
-            ->paginate(10);
-
-        return view('Mentor.projet.disponibilite', compact('demandes_mentors'));
-    }
+    
 
 }

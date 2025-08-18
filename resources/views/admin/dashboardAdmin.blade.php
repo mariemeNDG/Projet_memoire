@@ -10,79 +10,97 @@
             </nav>
             <div class="container-fluid mt-4">
                 <!-- Stats Cards -->
-                <div class="row mb-4">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-primary text-white">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Utilisateurs</h6>
-                                        <h2 class="mb-0">1,248</h2>
-                                    </div>
-                                    <i class="fas fa-users fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-white" style="width: 75%"></div>
-                                </div>
-                                <small class="d-block mt-2">+12% ce mois</small>
-                            </div>
-                        </div>
-                    </div>
+<div class="container my-5">
+<div class="container my-5">
+  <div class="row g-4 mb-5">
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-success text-white">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Projets</h6>
-                                        <h2 class="mb-0">356</h2>
-                                    </div>
-                                    <i class="fas fa-lightbulb fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-white" style="width: 60%"></div>
-                                </div>
-                                <small class="d-block mt-2">8 en attente</small>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Utilisateurs -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Utilisateurs</h6>
+              <h2 class="fw-bold mb-0 text-primary">1,248</h2>
+            </div>
+            <div class="stat-icon bg-white text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-users fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-primary" style="width:75%"></div>
+          </div>
+          <small class="d-block mt-2 text-muted">+12% ce mois</small>
+        </div>
+      </div>
+    </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-danger text-white">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Signalements</h6>
-                                        <h2 class="mb-0">24</h2>
-                                    </div>
-                                    <i class="fas fa-flag fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-white" style="width: 30%"></div>
-                                </div>
-                                <small class="d-block mt-2">5 non traités</small>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Projets -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets</h6>
+              <h2 class="fw-bold mb-0 text-success">356</h2>
+            </div>
+            <div class="stat-icon bg-white text-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-lightbulb fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-success" style="width:60%"></div>
+          </div>
+          <small class="d-block mt-2 text-muted">8 en attente</small>
+        </div>
+      </div>
+    </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-warning text-dark">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Activité</h6>
-                                        <h2 class="mb-0">1,402</h2>
-                                    </div>
-                                    <i class="fas fa-history fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-dark" style="width: 85%"></div>
-                                </div>
-                                <small class="d-block mt-2">Aujourd'hui</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Signalements -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Signalements</h6>
+              <h2 class="fw-bold mb-0 text-danger">24</h2>
+            </div>
+            <div class="stat-icon bg-white text-danger rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-flag fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-danger" style="width:30%"></div>
+          </div>
+          <small class="d-block mt-2 text-muted">5 non traités</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activité -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Activité</h6>
+              <h2 class="fw-bold mb-0 text-warning">1,402</h2>
+            </div>
+            <div class="stat-icon bg-white text-warning rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-history fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-warning" style="width:85%"></div>
+          </div>
+          <small class="d-block mt-2 text-muted">Aujourd'hui</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
                 <!-- Charts Row -->
                 <div class="row mb-4">

@@ -6,104 +6,96 @@
 
         </div>
         <section class="section dashboard">
-            <div class="row">
+           <div class="container my-5">
+  <div class="row g-4">
 
-                <!-- Left side columns -->
-                <div class="col-lg-12">
-                    <div class="row">
-
-                        <!-- Dépenses totales aujourd'hui -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Projets actifs</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cash-coin"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>
-                                                10 FCFA
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dépenses totales -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Projet labellisé</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cash-coin"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>
-                                                10 FCFA
-                                            </h6>
-                                            <span class="text-success small pt-1 fw-bold">
-                                                10 FCFA
-                                            </span>
-                                            <span class="text-muted small pt-2 ps-1">ce mois</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Nombre de catégories -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card revenue-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Mentors</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-tags"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>
-                                                10
-                                            </h6>
-                                            <span class="text-muted small pt-2 ps-1">différentes catégories</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Nombre de dépenses -->
-                        <div class="col-xxl-4 col-xl-12">
-                            <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Financement en cours</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div
-                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-wallet2"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>
-                                                10
-                                            </h6>
-                                            <span class="text-muted small pt-2 ps-1">enregistrées</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
+    <!-- Projets actifs -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets actifs</h6>
+              <h2 class="fw-bold mb-0 text-primary">10</h2>
             </div>
+            <div class="stat-icon bg-white text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-project-diagram fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-primary" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projets labellisés -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets labellisés</h6>
+              <h2 class="fw-bold mb-0 text-success">10</h2>
+              <small class="text-muted">ce mois</small>
+            </div>
+            <div class="stat-icon bg-white text-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-award fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-success" style="width:50%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mentors -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Mentors</h6>
+              <h2 class="fw-bold mb-0 text-info">10</h2>
+              <small class="text-muted">différentes catégories</small>
+            </div>
+            <div class="stat-icon bg-white text-info rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-user-tie fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-info" style="width:40%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financement en cours -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Financement en cours</h6>
+              <h2 class="fw-bold mb-0 text-warning">10</h2>
+              <small class="text-muted">enregistrés</small>
+            </div>
+            <div class="stat-icon bg-white text-warning rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-hand-holding-usd fa-2x"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-warning" style="width:65%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
         </section>
 
         <section class="section dashboard">

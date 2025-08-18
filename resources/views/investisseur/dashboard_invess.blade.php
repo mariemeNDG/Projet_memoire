@@ -3,75 +3,102 @@
 @section('content')
             <div class="container-fluid mt-4">
                 <!-- Stats Cards -->
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-danger text-white">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Projets en attente</h6>
-                                        <h2 class="mb-0">{{ $stats['projets_finances'] }}</h2>
-                                    </div>
-                                    <i class="fas fa-briefcase fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-white" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="container my-5">
+  <div class="row g-4 mb-5">
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-primary text-white">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Projets investis</h6>
-                                        <h2 class="mb-0">{{ $stats['projets_investis'] }}</h2>
-                                    </div>
-                                    <i class="fas fa-briefcase fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-white" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Projets en attente -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets en attente</h6>
+              <h2 class="fw-bold mb-0 text-danger">{{ $stats['projets_finances'] }}</h2>
+            </div>
+            <div class="stat-icon bg-danger-subtle text-danger rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-danger" style="width:75%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-warning text-dark">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Projets en cours</h6>
-                                        <h2 class="mb-0">{{ $stats['projets_en_cours'] }}</h2>
-                                    </div>
-                                    <i class="fas fa-bell fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-dark" style="width: 45%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Projets investis -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets investis</h6>
+              <h2 class="fw-bold mb-0 text-primary">{{ $stats['projets_investis'] }}</h2>
+            </div>
+            <div class="stat-icon bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-primary" style="width:75%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card bg-success text-white">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="text-uppercase">Montant Investis</h6>
-                                        <h2 class="mb-0">{{ $stats['montant_investi'] }} CFA</h2>
-                                    </div>
-                                    <i class="fas fa-euro-sign fa-3x opacity-50"></i>
-                                </div>
-                                <div class="progress mt-3" style="height: 5px;">
-                                    <div class="progress-bar bg-white" style="width: 60%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Projets en cours -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets en cours</h6>
+              <h2 class="fw-bold mb-0 text-warning">{{ $stats['projets_en_cours'] }}</h2>
+            </div>
+            <div class="stat-icon bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-bell"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-warning" style="width:45%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Montant investis -->
+    <div class="col-xl-3 col-md-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="me-3">
+              <h6 class="text-uppercase text-muted fw-bold mb-1">Montant investis</h6>
+              <h2 class="fw-bold mb-0 text-success">{{ $stats['montant_investi'] }} CFA</h2>
+            </div>
+            <div class="stat-icon bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+              <i class="fas fa-euro-sign"></i>
+            </div>
+          </div>
+          <div class="progress mt-3 rounded-pill" style="height:8px;">
+            <div class="progress-bar bg-success" style="width:60%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  }
+</style>
+
+
 
                 <!-- Charts Row -->
                 <div class="row mb-4">

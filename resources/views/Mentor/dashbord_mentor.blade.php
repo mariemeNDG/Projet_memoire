@@ -1,45 +1,59 @@
 @extends('index')
 @section('title', 'Tableau de Bord Mentor')
 @section('content')
-            <div class="container-fluid mt-4">
-                <div class="row mb-4">
-                    <div class="col-md-3">
-                        <div class="card stat-card bg-primary text-white">
-                            <div class="card-body">
-                                <i class="fas fa-hands-helping"></i>
-                                <h2>5</h2>
-                                <p>Projets accompagnés</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card stat-card bg-success text-white">
-                            <div class="card-body">
-                                <i class="fas fa-clock"></i>
-                                <h2>12h</h2>
-                                <p>Ce mois-ci</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card stat-card bg-info text-white">
-                            <div class="card-body">
-                                <i class="fas fa-star"></i>
-                                <h2>4.8</h2>
-                                <p>Note moyenne</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card stat-card bg-warning text-dark">
-                            <div class="card-body">
-                                <i class="fas fa-bell"></i>
-                                <h2>3</h2>
-                                <p>Nouvelles demandes</p>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container-fluid mt-4">
+<div class="container my-5">
+    <div class="row g-4">
+                <!-- Card 4 -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-briefcase fa-2x text-primary mb-3"></i>
+                    <h2 class="fw-bold">15</h2>
+                    <p class="text-muted mb-0">Projets accompagnés</p>
                 </div>
+            </div>
+        </div>
+        <!-- Card 1 -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-clock fa-2x text-success mb-3"></i>
+                    <h2 class="fw-bold">12h</h2>
+                    <p class="text-muted mb-0">Ce mois-ci</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-star fa-2x text-warning mb-3"></i>
+                    <h2 class="fw-bold">4.8</h2>
+                    <p class="text-muted mb-0">Note moyenne</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center py-4">
+                    <i class="fas fa-bell fa-2x text-info mb-3"></i>
+                    <h2 class="fw-bold">3</h2>
+                    <p class="text-muted mb-0">Nouvelles demandes</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
 
                 <div class="row">
                     <div class="col-lg-8">

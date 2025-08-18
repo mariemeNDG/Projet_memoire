@@ -39,6 +39,11 @@ class Mentorat extends Model
         return $this->belongsTo(Projet::class);
     }
 
+    public function accompagnement()
+    {
+        return $this->hasOne(Accompagnement::class);
+    }
+
     public function getStatusBadgeAttribute()
     {
         $badges = [

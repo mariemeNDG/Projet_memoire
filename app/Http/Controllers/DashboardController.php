@@ -81,9 +81,6 @@ class DashboardController extends Controller
         return view('Mentor.projet.accompagnement');
     }
 
-
-    
-
     public function calendrier()
     {
         return view('Mentor.disponibilite.calendrier');
