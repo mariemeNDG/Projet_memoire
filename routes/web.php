@@ -3,12 +3,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Entrepreneur\FinancementController;
 use App\Http\Controllers\Entrepreneur\MentoratController;
 use App\Http\Controllers\Entrepreneur\ProjetController;
 use App\Http\Controllers\Investisseur\InvestisseurController;
 use App\Http\Controllers\Mentor\AccompagnementController;
+use App\Http\Controllers\Mentor\DashboardMentorController;
+use App\Http\Controllers\Mentor\SessionController;
 use App\Models\Financement;
 use App\Models\Mentorat;
 
@@ -27,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 // ------------------------- ADMIN -------------------------
 Route::prefix('admin/tableau-de-bord')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboardAdmin'])->name('dashboard');
+    Route::get('/', [DashboardAdminController::class, 'dashboard'])->name('dashboard');
 
     // ========================= GESTION DES UTILISATEURS =========================
     Route::get('/utilisateurs', [AdminController::class, 'listUsers'])->name('utilisateurs');
@@ -43,7 +46,7 @@ Route::prefix('admin/tableau-de-bord')->name('admin.')->middleware(['auth', 'rol
     Route::put('/roles/{role}', [RoleController::class, 'update'])->name('roles.update');
     Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
 
-    Route::get('/validations', [DashboardController::class, 'validationUser'])->name('validations');
+    Route::get('/projets', [DashboardAdminController::class, 'projets'])->name('projets');
     Route::get('/signalements', [DashboardController::class, 'signalement'])->name('signalements');
 });
 
@@ -79,18 +82,19 @@ Route::prefix('entrepreneur/tableau-de-bord')->name('entrepreneur.')->middleware
 
 // ------------------------- MENTOR -------------------------
 Route::prefix('mentor/tableau-de-bord')->name('mentor.')->middleware(['auth', 'role:mentor'])->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboardMentor'])->name('dashboard');
+    Route::get('/', [DashboardMentorController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/accompagnement', [AccompagnementController::class, 'accompagnement'])->name('accompagnement');
     Route::get('/disponibilites', [AccompagnementController::class, 'disponibilite'])->name('disponibilite');
     Route::post('/accompagnements', [AccompagnementController::class, 'storeAccompagnement'])->name('accompagnements.store');
-    
-    Route::get('/calendrier', [DashboardController::class, 'calendrier'])->name('calendrier');
+
+    Route::get('/calendrier', [SessionController::class, 'calendrier'])->name('calendrier');
     Route::get('/preferences', [DashboardController::class, 'preference'])->name('preferences');
     Route::get('/evaluations', [DashboardController::class, 'evaluation'])->name('evaluations');
 
-    Route::post('/accompagnement/envoyer-message', [AccompagnementController::class, 'envoyerMessage'])
-     ->name('accompagnement.envoyerMessage');
+    Route::post('/accompagnement/envoyer-message', [AccompagnementController::class, 'envoyerMessage'])->name('accompagnement.envoyerMessage');
+
+    Route::post('/sessions/store', [SessionController::class, 'store'])->name('sessions.store');
 
 });
 

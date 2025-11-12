@@ -14,7 +14,7 @@
 
                     <!-- Avatar -->
                     <div class="position-absolute top-100 start-50 translate-middle">
-                        <img src="{{ asset('images/avatar.png') }}" alt="Avatar" class="rounded-circle border border-4 border-white shadow" style="width: 120px; height: 120px; object-fit: cover;">
+            <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
                     </div>
                 </div>
 

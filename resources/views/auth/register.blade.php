@@ -16,7 +16,7 @@
 
                     <!-- Logo -->
                     <div class="text-center mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-height: 80px;">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="img-fluid" style="max-height: 80px;">
                     </div>
 
                     <h3 class="text-center mb-4 fw-bold text-primary">Créer un compte</h3>

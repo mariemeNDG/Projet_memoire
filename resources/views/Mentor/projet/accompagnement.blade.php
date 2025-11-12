@@ -16,7 +16,7 @@
                     <i class="fas fa-plus me-1"></i> Nouvelle session
                 </button>
             </div>
-            @if(session('success'))
+            @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -43,9 +43,9 @@
                                 </div>
                                 <p>{{ $accompagnement->messages ?? 'Pas de description disponible' }}</p>
                                 <div class="mb-3">
-                                    @foreach ($accompagnement->domaine_accompagnement as $domaine)
+                                    {{-- @foreach ($accompagnement->domaine_accompagnement as $domaine)
                                         <span class="badge bg-light text-dark">{{ $domaine }}</span>
-                                    @endforeach
+                                    @endforeach --}}
                                 </div>
                                 <div class="d-flex justify-content-between mb-3">
                                     <div>
@@ -57,15 +57,14 @@
 
                             </div>
                             <div class="card-footer bg-white d-flex justify-content-between">
-                                <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                                    data-bs-target="#sessionModal">
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#sessionModal{{ $accompagnement->id }}">
                                     <i class="fas fa-calendar me-1"></i> Sessions
                                 </button>
 
-                                <button class="btn btn-primary" 
-                                    data-bs-toggle="modal" data-bs-target="#contactModal{{ $accompagnement->id }}">
-                                <i class="fas fa-comments me-1"></i> Contacter
-                            </button>
+                                <button class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#contactModal{{ $accompagnement->id }}">
+                                    <i class="fas fa-comments me-1"></i> Contacter
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -105,63 +104,65 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal planifier session -->
+                    <div class="modal fade" id="sessionModal{{ $accompagnement->id }}" tabindex="-1"
+                        aria-labelledby="sessionModalLabel{{ $accompagnement->id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary text-white">
+                                    <h5 class="modal-title" id="sessionModalLabel{{ $accompagnement->id }}">Planifier une
+                                        session</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form method="POST" action="{{ route('mentor.sessions.store') }}">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <!-- Projet lié -->
+                                        <input type="hidden" name="projet_id"
+                                            value="{{ $accompagnement->mentorat->projet->id }}">
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Date et heure</label>
+                                            <input type="datetime-local" name="date_session" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Durée (minutes)</label>
+                                            <input type="number" name="duree" class="form-control" value="60"
+                                                min="15" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Type de session</label>
+                                            <select name="type" class="form-select" required>
+                                                <option value="Stratégie">Stratégie</option>
+                                                <option value="Technique">Technique</option>
+                                                <option value="Business Model">Business Model</option>
+                                                <option value="Financement">Financement</option>
+                                                <option value="Autre">Autre</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Description</label>
+                                            <textarea name="description" class="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Annuler</button>
+                                        <button type="submit" class="btn btn-primary">Planifier</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 @empty
                     <p class="text-muted text-center text-danger">Aucun projet accompagné pour le moment.</p>
                 @endforelse
             </div>
         </div>
     </div>
-    </div>
-
-    <!-- New Session Modal -->
-    <div class="modal fade" id="sessionModal" tabindex="-1" aria-labelledby="newSessionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="newSessionModalLabel">Planifier une session</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="sessionForm">
-                        <div class="mb-3">
-                            <label class="form-label">Projet</label>
-                            <select class="form-select">
-                                <option selected>EcoTech</option>
-                                <option>AgriConnect</option>
-                                <option>MediTrack</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Date et heure</label>
-                            <input type="datetime-local" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Durée (minutes)</label>
-                            <input type="number" class="form-control" value="60">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Type de session</label>
-                            <select class="form-select">
-                                <option selected>Stratégie</option>
-                                <option>Technique</option>
-                                <option>Business Model</option>
-                                <option>Financement</option>
-                                <option>Autre</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Planifier</button>
-                </div>
-            </div>
-        </div>
     </div>
 
 

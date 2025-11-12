@@ -71,21 +71,10 @@ class DashboardController extends Controller
         return view('entrepreneurs.financement.proposition');
     }
 
-    public function dashboardMentor()
-    {
-        return view('Mentor.dashbord_mentor');
-    }
-
     public function accompagnement()
     {
         return view('Mentor.projet.accompagnement');
     }
-
-    public function calendrier()
-    {
-        return view('Mentor.disponibilite.calendrier');
-    }
-
 
     public function preference()
     {
@@ -153,23 +142,6 @@ class DashboardController extends Controller
     }
 
     // Parti admin
-
-    public function dashboardAdmin()
-    {
-        return view('admin.dashboardAdmin');
-    }
-
-
-
-    public function role()
-    {
-        return view('admin.utilisateur.role');
-    }
-
-    public function validationUser()
-    {
-        return view('admin.projet.validation');
-    }
 
     public function signalement()
     {

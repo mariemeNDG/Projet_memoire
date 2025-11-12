@@ -2,195 +2,169 @@
 @section('title', 'Tableau de Bord Administrateur')
 @section('content')
     <div class="pagetitle">
-            <h1>Tableau de Bord</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">Accueil</li>
-                </ol>
-            </nav>
-            <div class="container-fluid mt-4">
-                <!-- Stats Cards -->
-<div class="container my-5">
-<div class="container my-5">
-  <div class="row g-4 mb-5">
+        <h1>Tableau de Bord</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Accueil</li>
+            </ol>
+        </nav>
+        <div class="container-fluid mt-4">
+            <!-- Stats Cards -->
+            <div class="container my-5">
+                <div class="container my-5">
+                    <div class="row g-4 mb-5">
 
-    <!-- Utilisateurs -->
-    <div class="col-xl-3 col-md-6">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body py-4 px-4">
-          <div class="d-flex align-items-center justify-content-between">
-            <div class="me-3">
-              <h6 class="text-uppercase text-muted fw-bold mb-1">Utilisateurs</h6>
-              <h2 class="fw-bold mb-0 text-primary">1,248</h2>
-            </div>
-            <div class="stat-icon bg-white text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
-              <i class="fas fa-users fa-2x"></i>
-            </div>
-          </div>
-          <div class="progress mt-3 rounded-pill" style="height:8px;">
-            <div class="progress-bar bg-primary" style="width:75%"></div>
-          </div>
-          <small class="d-block mt-2 text-muted">+12% ce mois</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Projets -->
-    <div class="col-xl-3 col-md-6">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body py-4 px-4">
-          <div class="d-flex align-items-center justify-content-between">
-            <div class="me-3">
-              <h6 class="text-uppercase text-muted fw-bold mb-1">Projets</h6>
-              <h2 class="fw-bold mb-0 text-success">356</h2>
-            </div>
-            <div class="stat-icon bg-white text-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
-              <i class="fas fa-lightbulb fa-2x"></i>
-            </div>
-          </div>
-          <div class="progress mt-3 rounded-pill" style="height:8px;">
-            <div class="progress-bar bg-success" style="width:60%"></div>
-          </div>
-          <small class="d-block mt-2 text-muted">8 en attente</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Signalements -->
-    <div class="col-xl-3 col-md-6">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body py-4 px-4">
-          <div class="d-flex align-items-center justify-content-between">
-            <div class="me-3">
-              <h6 class="text-uppercase text-muted fw-bold mb-1">Signalements</h6>
-              <h2 class="fw-bold mb-0 text-danger">24</h2>
-            </div>
-            <div class="stat-icon bg-white text-danger rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
-              <i class="fas fa-flag fa-2x"></i>
-            </div>
-          </div>
-          <div class="progress mt-3 rounded-pill" style="height:8px;">
-            <div class="progress-bar bg-danger" style="width:30%"></div>
-          </div>
-          <small class="d-block mt-2 text-muted">5 non traités</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Activité -->
-    <div class="col-xl-3 col-md-6">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body py-4 px-4">
-          <div class="d-flex align-items-center justify-content-between">
-            <div class="me-3">
-              <h6 class="text-uppercase text-muted fw-bold mb-1">Activité</h6>
-              <h2 class="fw-bold mb-0 text-warning">1,402</h2>
-            </div>
-            <div class="stat-icon bg-white text-warning rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
-              <i class="fas fa-history fa-2x"></i>
-            </div>
-          </div>
-          <div class="progress mt-3 rounded-pill" style="height:8px;">
-            <div class="progress-bar bg-warning" style="width:85%"></div>
-          </div>
-          <small class="d-block mt-2 text-muted">Aujourd'hui</small>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-                <!-- Charts Row -->
-                <div class="row mb-4">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0">Activité récente</h5>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="activityChart" height="250"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0">Répartition utilisateurs</h5>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="usersChart" height="250"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="card">
-                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Actions récentes</h5>
-                        <a href="#" class="btn btn-light btn-sm">
-                            Voir le journal complet
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-badge bg-success"></div>
-                                <div class="timeline-content">
-                                    <div class="d-flex justify-content-between">
-                                        <strong>Admin System</strong>
-                                        <small class="text-muted">Il y a 5 min</small>
+                        <!-- Utilisateurs -->
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body py-4 px-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="me-3">
+                                            <h6 class="text-uppercase text-muted fw-bold mb-1">Utilisateurs</h6>
+                                            <h2 class="fw-bold mb-0 text-primary">{{ $conteurs['users'] }}</h2>
+                                        </div>
+                                        <div
+                                            class="stat-icon bg-white text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                                            <i class="fas fa-users fa-2x"></i>
+                                        </div>
                                     </div>
-                                    <p>A modifié le rôle de <strong>Jean Dupont</strong> en "Mentor certifié"</p>
+
                                 </div>
                             </div>
-                            <!-- Plus d'activités... -->
+                        </div>
+
+                        <!-- Projets -->
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body py-4 px-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="me-3">
+                                            <h6 class="text-uppercase text-muted fw-bold mb-1">Projets</h6>
+                                            <h2 class="fw-bold mb-0 text-success">{{ $conteurs['projets'] }}</h2>
+                                        </div>
+                                        <div
+                                            class="stat-icon bg-white text-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                                            <i class="fas fa-lightbulb fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- projets_finances -->
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body py-4 px-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="me-3">
+                                            <h6 class="text-uppercase text-muted fw-bold mb-1">Projets en Financement</h6>
+                                            <h2 class="fw-bold mb-0 text-danger">{{ $conteurs['projets_finances'] }}</h2>
+                                        </div>
+                                        <div
+                                            class="stat-icon bg-white text-danger rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                                            <i class="fas fa-flag fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projets en Incubation -->
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body py-4 px-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="me-3">
+                                            <h6 class="text-uppercase text-muted fw-bold mb-1">Projets en Incubation</h6>
+                                            <h2 class="fw-bold mb-0 text-warning">{{ $conteurs['projets_incubation'] }}</h2>
+                                        </div>
+                                        <div
+                                            class="stat-icon bg-white text-warning rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                                            <i class="fas fa-history fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projets en Mentorat -->
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body py-4 px-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="me-3">
+                                            <h6 class="text-uppercase text-muted fw-bold mb-1">projets en Mentorat</h6>
+                                            <h2 class="fw-bold mb-0 text-info">{{ $conteurs['mentorat'] }}</h2>
+                                        </div>
+                                        <div
+                                            class="stat-icon bg-white text-info rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                                            <i class="fas fa-flag fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Pending Actions -->
                 <div class="card mt-4">
-                    <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0">Actions en attente</h5>
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Projets récents</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th width="25%">Élément</th>
-                                        <th width="20%">Type</th>
-                                        <th width="20%">Demandé par</th>
+                                        <th width="25%">Nom</th>
+                                        <th width="20%">Etat</th>
+                                        <th width="20%">Entrepreneur</th>
                                         <th width="20%">Date</th>
                                         <th width="15%">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Projet "EcoTech"</td>
-                                        <td><span class="badge bg-info">Validation</span></td>
-                                        <td>Porteur: Marie L.</td>
-                                        <td>15/06/2023</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-success me-1">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <!-- Plus d'actions... -->
+                                    @forelse ($projets as $item)
+                                        <tr>
+                                            <td>{{ $item->nom }}</td>
+                                            <td><span class="badge bg-secondary">{{ $item->etat }}</span></td>
+                                            <td> {{ $item->user->name }}</td>
+                                            <td>{{ $item->created_at->format('d/m/Y') }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-success me-1">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">Aucun projet récent</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+                <!-- Charts Row -->
+                <div class="row mb-4">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Répartition des projets par état</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="projetsChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Scripts -->
@@ -198,79 +172,36 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="../../../js/main.js"></script>
     <script src="../../../js/admin.js"></script>
-    <script>
-        // Activity Chart
-        const activityCtx = document.getElementById('activityChart').getContext('2d');
-        new Chart(activityCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
-                datasets: [
-                    {
-                        label: 'Nouveaux utilisateurs',
-                        data: [45, 60, 75, 50, 80, 95],
-                        borderColor: '#3498db',
-                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
-                        tension: 0.3
-                    },
-                    {
-                        label: 'Projets soumis',
-                        data: [20, 35, 40, 30, 45, 60],
-                        borderColor: '#2ecc71',
-                        backgroundColor: 'rgba(46, 204, 113, 0.1)',
-                        tension: 0.3
-                    },
-                    {
-                        label: 'Signalements',
-                        data: [5, 8, 6, 10, 7, 4],
-                        borderColor: '#e74c3c',
-                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                        tension: 0.3
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                interaction: {
-                    intersect: false,
-                    mode: 'index'
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('projetsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut', // ou 'pie'
+        data: {
+            labels: @json($projetsParEtat->keys()), // états (ex: En financement, En incubation)
+            datasets: [{
+                label: 'Nombre de projets',
+                data: @json($projetsParEtat->values()), // valeurs (ex: 5, 3, 7)
+                backgroundColor: [
+                    '#007bff',
+                    '#28a745',
+                    '#ffc107',
+                    '#dc3545',
+                    '#6f42c1',
+                    '#20c997'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
                 }
             }
-        });
-
-        // Users Distribution Chart
-        const usersCtx = document.getElementById('usersChart').getContext('2d');
-        new Chart(usersCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Porteurs', 'Mentors', 'Incubateurs', 'Investisseurs', 'Admins'],
-                datasets: [{
-                    data: [650, 150, 80, 120, 8],
-                    backgroundColor: [
-                        '#3498db',
-                        '#2ecc71',
-                        '#9b59b6',
-                        '#f1c40f',
-                        '#e74c3c'
-                    ],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'right'
-                    }
-                },
-                cutout: '60%'
-            }
-        });
-    </script>
+        }
+    });
+</script>
 
 @endsection
